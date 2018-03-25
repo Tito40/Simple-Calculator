@@ -1,8 +1,11 @@
 import java.awt.Button;
 import java.awt.GridLayout;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -22,15 +25,17 @@ public class Front extends JFrame
 	{
 		
 		setLayout(new GridLayout(0,1));
+		
 		JTextField txt = new JTextField();
-		add(txt);
 		setVisible(true);
 		setSize(500, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		add(txt);
 		add(new buttons(txt));
 	}
 
 }
+
 
 class buttons extends JPanel
 {
@@ -61,7 +66,7 @@ class buttons extends JPanel
 		mem = new Button("mem");
 		
 
-						
+		//add(t);				
 		add(zero);
 		add(one);
 		add(two);
@@ -222,7 +227,14 @@ class buttons extends JPanel
 					value = Integer.parseInt(var.getFirst()) + Integer.parseInt(t.getText());
 					t.setText(value+"");
 				}
+				
+				else if(opr.equals("-")) 
+				{
+					value = Integer.parseInt(var.getFirst()) - Integer.parseInt(t.getText());
+					t.setText(value+"");
+				}
 			}
+			
 			
 		});
 		
@@ -246,7 +258,8 @@ class buttons extends JPanel
 			public void actionPerformed(ActionEvent e) 
 			{
 				var.setFirst(t.getText());
-				
+				var.setSecond(" ");
+				func.setFunction("-");
 			}
 			
 		});
@@ -297,8 +310,6 @@ class Variable
 	{
 		this.Second = null;
 	}
-	
-	
 }
 
 
